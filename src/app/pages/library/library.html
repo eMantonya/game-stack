@@ -1,0 +1,30 @@
+<div class="filters">
+    <mat-form-field appearance="fill">
+        <mat-label>Genre</mat-label>
+        <mat-select [(ngModel)]="selectedGenre">
+            <mat-option value="">All</mat-option>
+            <mat-option *ngFor="let genre of genres" [value]="genre">{{genre}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+    <mat-label>Platform</mat-label>
+    <mat-select [(ngModel)]="selectedPlatform">
+      <mat-option value="">All</mat-option>
+      <mat-option *ngFor="let platform of platforms" [value]="platform">{{ platform }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="search-bar">
+    <mat-label>Search Games</mat-label>
+    <input matInput [formControl]="searchControl" placeholder="Search by title"/>
+  </mat-form-field>
+  <span class="clear-filters" (click)="clearFilters()">Clear filters</span>
+</div>
+
+<div class="library-grid">
+  <app-game-card 
+    *ngFor="let game of filteredGames" 
+    [game]="game"
+    [selectedPlatform]="selectedPlatform"
+    (platformClicked)="applyPlatformFilter($event)">
+  </app-game-card>
+</div>

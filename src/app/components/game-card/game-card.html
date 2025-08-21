@@ -1,0 +1,19 @@
+<mat-card class="game-card">
+  <mat-card-header class="header">
+    <mat-card-title>{{ game.title }}</mat-card-title>
+    <mat-card-subtitle>{{ game.genre }}</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div class="description">{{ game.description }}</div>
+    <mat-chip-listbox>
+      <mat-chip color="primary" 
+        selected ="game.platform == selectedPlatform" 
+        (click)="handlePlatformClick()" 
+        class="clickable-chip">
+        {{ game.platform }}
+      </mat-chip>
+    </mat-chip-listbox>
+    <mat-progress-bar mode="determinate" [value]="game.progress"></mat-progress-bar>
+  </mat-card-content>
+</mat-card>

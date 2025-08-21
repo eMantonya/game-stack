@@ -1,0 +1,25 @@
+.library-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.filters {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  justify-content: center;
+}
+
+.search-bar {
+  width: 300px;
+}
+
+.clear-filters {
+  color: #cfc3e2;
+  cursor: pointer;
+  margin-left: 1rem;
+  font-size: 0.95em;
+  text-decoration: underline;
+  align-self: center;
+}

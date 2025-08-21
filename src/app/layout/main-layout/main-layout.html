@@ -1,0 +1,23 @@
+<header style="padding: 1rem; background: #222; color: white;">
+  <h1>🎮 GameStack</h1>
+  <nav style="margin-top: 0.5rem;">
+  <a routerLink="/" style="margin-right: 1rem; color: white; display: inline-flex; align-items: center;">
+    <mat-icon style="margin-right: 0.25rem;">home</mat-icon> Home
+  </a>
+  <a routerLink="/library" style="margin-right: 1rem; color: white; display: inline-flex; align-items: center;">
+    <mat-icon style="margin-right: 0.25rem;">library_books</mat-icon> Library
+  </a>
+  <a routerLink="/settings" style="color: white; display: inline-flex; align-items: center;">
+    <mat-icon style="margin-right: 0.25rem;">settings</mat-icon> Settings
+  </a>
+</nav>
+
+</header>
+
+<main style="padding: 2rem;">
+  <router-outlet></router-outlet>
+</main>
+
+<footer style="padding: 1rem; background: #eee; text-align: center;">
+  &copy; 2025 GameStack
+</footer>
