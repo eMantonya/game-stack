@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInput, MatInputModule } from '@angular/material/input';
+import { SteamService } from '../../services/steam';
+import { Game } from '../../models/game.model';
 
 @Component({
   selector: 'app-library',
@@ -18,10 +20,12 @@ export class LibraryComponent {
   searchControl = new FormControl('');
   selectedGenre = '';
   selectedPlatform = '';
+  steamId = '';
+  games: Game[] = [];
 
   // Sample game data, replace with actual data source
   // This could be fetched from a service or API in a real application
-  games = [
+/*   games = [
   {
     title: 'Elden Ring',
     genre: 'Action RPG',
@@ -162,7 +166,24 @@ export class LibraryComponent {
     platform: 'Switch',
     progress: 75
   }
-];
+]; */
+
+  constructor(private steamService: SteamService) {}
+
+  onSubmit(): void {
+    if (!this.steamId) return;
+    this.steamService.getSteamLibrary(this.steamId).subscribe({
+      next: data => this.games = data,
+      error: err => console.error('Steam API error', err)
+    });
+  }
+
+  fetchSteamLibrary(steamId: string): void {
+    this.steamService.getSteamLibrary(steamId).subscribe({
+      next: data => this.games = data,
+      error: err => console.error('Steam API error', err)
+    });
+  }
 
   get filteredGames() {
     const searchQuery = this.searchControl.value?.toLowerCase() || '';
@@ -184,11 +205,11 @@ export class LibraryComponent {
     this.searchControl.setValue('');
   }
 
-  get genres() {
+   get genres() {
     return [... new Set(this.games.map(g => g.genre))];
   }
 
   get platforms() {
     return [... new Set(this.games.map(g => g.platform))];
-  }
+  } 
 }
