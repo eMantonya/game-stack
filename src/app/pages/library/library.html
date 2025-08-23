@@ -3,14 +3,14 @@
         <mat-label>Genre</mat-label>
         <mat-select [(ngModel)]="selectedGenre">
             <mat-option value="">All</mat-option>
-            <mat-option *ngFor="let genre of genres" [value]="genre">{{genre}}</mat-option>
+            <!-- <mat-option *ngFor="let genre of genres" [value]="genre">{{genre}}</mat-option> -->
         </mat-select>
     </mat-form-field>
     <mat-form-field appearance="fill">
     <mat-label>Platform</mat-label>
     <mat-select [(ngModel)]="selectedPlatform">
       <mat-option value="">All</mat-option>
-      <mat-option *ngFor="let platform of platforms" [value]="platform">{{ platform }}</mat-option>
+      <!-- <mat-option *ngFor="let platform of platforms" [value]="platform">{{ platform }}</mat-option> -->
     </mat-select>
   </mat-form-field>
   <mat-form-field appearance="outline" class="search-bar">
@@ -19,12 +19,18 @@
   </mat-form-field>
   <span class="clear-filters" (click)="clearFilters()">Clear filters</span>
 </div>
+  <form (ngSubmit)="onSubmit()" #steamForm="ngForm" class="steam-form">
+    <label for="steamId">Steam ID:</label>
+    <input type="text" id="steamId" name="steamId" [(ngModel)]="steamId" required/>
+    <button type="submit" [disabled]="steamForm.invalid">Get Library</button>
+  </form>
 
 <div class="library-grid">
-  <app-game-card 
-    *ngFor="let game of filteredGames" 
-    [game]="game"
-    [selectedPlatform]="selectedPlatform"
-    (platformClicked)="applyPlatformFilter($event)">
-  </app-game-card>
+  @for (game of filteredGames; track game) {
+    <app-game-card
+      [game]="game"
+      [selectedPlatform]="selectedPlatform"
+      (platformClicked)="applyPlatformFilter($event)">
+    </app-game-card>
+  }
 </div>

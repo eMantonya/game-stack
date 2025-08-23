@@ -3,6 +3,7 @@ import { MatCard, MatCardContent, MatCardHeader, MatCardSubtitle, MatCardTitle }
 import { MatChip, MatChipListbox } from '@angular/material/chips';
 import { MatProgressBar } from '@angular/material/progress-bar';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { Game } from '../../models/game.model';
 
 @Component({
   selector: 'app-game-card',
@@ -11,13 +12,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
   styleUrls: ['./game-card.scss'],
 })
 export class GameCardComponent {
-  @Input() game!: {
-    title: string;
-    genre: string;
-    description: string;
-    platform: string;
-    progress: number;
-  };
+  @Input() game!: Game;
   @Input() selectedPlatform!: string;
   @Output() platformClicked = new EventEmitter<string>();
 
