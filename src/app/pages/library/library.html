@@ -3,14 +3,18 @@
         <mat-label>Genre</mat-label>
         <mat-select [(ngModel)]="selectedGenre">
             <mat-option value="">All</mat-option>
-            <!-- <mat-option *ngFor="let genre of genres" [value]="genre">{{genre}}</mat-option> -->
+            @for (genre of genres; track genre){
+              <mat-option [value]="genre">{{ genre }}</mat-option>
+            }
         </mat-select>
     </mat-form-field>
     <mat-form-field appearance="fill">
     <mat-label>Platform</mat-label>
     <mat-select [(ngModel)]="selectedPlatform">
       <mat-option value="">All</mat-option>
-      <!-- <mat-option *ngFor="let platform of platforms" [value]="platform">{{ platform }}</mat-option> -->
+      @for (platform of platforms; track platform) {
+        <mat-option [value]="platform">{{ platform }}</mat-option>
+      }
     </mat-select>
   </mat-form-field>
   <mat-form-field appearance="outline" class="search-bar">

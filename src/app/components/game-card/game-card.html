@@ -1,4 +1,4 @@
-<mat-card class="game-card">
+<mat-card class="game-card" [ngStyle]="{'background-image': 'url(' + background + ')'}">
   <mat-card-header class="header">
     <mat-card-title>{{ game.title }}</mat-card-title>
     <mat-card-subtitle>{{ game.genre }}</mat-card-subtitle>
