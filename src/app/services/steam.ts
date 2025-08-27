@@ -25,7 +25,7 @@ export class SteamService {
         platform: 'PC',
         progress: 0, //Might use achievement progress here
         description: 'No description available',
-        coverUrl: `https://media.steampowered.com/steam/apps/${game.appid}/library_600x900_2x.jpg`
+        coverUrl: `https://media.steampowered.com/steam/apps/${game.appid}/library_600x900_2x.jpg`    
       })))
     );
   }
