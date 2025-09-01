@@ -1,0 +1,31 @@
+<h2 mat-dialog-title>Add Games</h2>>
+<mat-dialog-content>
+    <mat-tab-group>
+        <mat-tab label="Sync with Steam">
+            <mat-label>Steam ID</mat-label>
+            <mat-form-field appearance="fill">
+                <input matInput [(ngModel)]="steamId" />
+            </mat-form-field>
+            <button mat-button color="primary" (click)="getSteamLibrary()">Get Steam Library</button>
+        </mat-tab>
+        <mat-tab label="Add Games Manually">
+            <mat-form-field appearance="fill">
+                <mat-label>Title</mat-label>
+                <input matInput [(ngModel)]="manualGame.title" />
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Genre</mat-label>
+                <input matInput [(ngModel)]="manualGame.genre" />
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Platform</mat-label>
+                <input matInput [(ngModel)]="manualGame.platform" />
+            </mat-form-field>
+            <button mat-button color="primary" (click)="addManualGame()">Add Game</button>
+        </mat-tab>
+    </mat-tab-group>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>

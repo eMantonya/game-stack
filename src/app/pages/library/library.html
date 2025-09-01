@@ -22,6 +22,7 @@
     <input matInput [formControl]="searchControl" placeholder="Search by title"/>
   </mat-form-field>
   <span class="clear-filters" (click)="clearFilters()">Clear filters</span>
+  <button mat-raised-cutton color="accent" (click)="openAddGameDialog()">Add Games</button>
 </div>
   <form (ngSubmit)="onSubmit()" #steamForm="ngForm" class="steam-form">
     <label for="steamId">Steam ID:</label>

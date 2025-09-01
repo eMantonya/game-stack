@@ -3,9 +3,11 @@ import { GameCardComponent } from '../../components/game-card/game-card';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
-import { MatInput, MatInputModule } from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input';
 import { SteamService } from '../../services/steam';
 import { Game } from '../../models/game.model';
+import { MatDialog } from '@angular/material/dialog';
+import { AddGameDialog } from '../../components/add-game-dialog/add-game-dialog';
 
 @Component({
   selector: 'app-library',
@@ -14,8 +16,6 @@ import { Game } from '../../models/game.model';
   templateUrl: './library.html',
   styleUrl: './library.scss'
 })
-
-
 export class LibraryComponent {
   searchControl = new FormControl('');
   selectedGenre = '';
@@ -23,8 +23,8 @@ export class LibraryComponent {
   steamId = '';
   games: Game[] = [];
 
-  // Sample game data, replace with actual data source
-  // This could be fetched from a service or API in a real application
+
+  // Sample game data
 /*   games = [
   {
     title: 'Elden Ring',
@@ -168,7 +168,19 @@ export class LibraryComponent {
   }
 ]; */
 
-  constructor(private steamService: SteamService) {}
+  constructor(private steamService: SteamService, private dialog: MatDialog) {}
+
+  openAddGameDialog(): void {
+    const dialogRef = this.dialog.open(AddGameDialog, {
+      width: '600px',
+    });
+
+    dialogRef.afterClosed().subscribe((newGames: Game[] | undefined) => {
+      if (newGames && newGames.length) {
+        this.games = [...this.games, ...newGames];
+      }
+    })
+  }
 
   onSubmit(): void {
     if (!this.steamId) return;
