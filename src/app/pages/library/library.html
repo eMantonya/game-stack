@@ -1,5 +1,5 @@
 <div class="filters">
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="outline">
         <mat-label>Genre</mat-label>
         <mat-select [(ngModel)]="selectedGenre">
             <mat-option value="">All</mat-option>
@@ -8,7 +8,7 @@
             }
         </mat-select>
     </mat-form-field>
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="outline">
     <mat-label>Platform</mat-label>
     <mat-select [(ngModel)]="selectedPlatform">
       <mat-option value="">All</mat-option>
@@ -22,19 +22,22 @@
     <input matInput [formControl]="searchControl" placeholder="Search by title"/>
   </mat-form-field>
   <span class="clear-filters" (click)="clearFilters()">Clear filters</span>
+  <button mat-raised-button color="accent" (click)="openAddGameDialog()">Add Games</button>
 </div>
-  <form (ngSubmit)="onSubmit()" #steamForm="ngForm" class="steam-form">
-    <label for="steamId">Steam ID:</label>
-    <input type="text" id="steamId" name="steamId" [(ngModel)]="steamId" required/>
-    <button type="submit" [disabled]="steamForm.invalid">Get Library</button>
-  </form>
 
 <div class="library-grid">
-  @for (game of filteredGames; track game) {
+  @if (filteredGames.length > 0) {
+    @for (game of filteredGames; track game) {
     <app-game-card
       [game]="game"
       [selectedPlatform]="selectedPlatform"
       (platformClicked)="applyPlatformFilter($event)">
     </app-game-card>
+    }
+  } @else {
+    <div class="no-games">
+      <p>Looks like your library is empty. Start by adding some games!</p>
+      <button mat-raised-button color="primary" (click)="openAddGameDialog()">Add Games</button>
+    </div>
   }
 </div>

@@ -23,3 +23,14 @@
   text-decoration: underline;
   align-self: center;
 }
+
+.no-games {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  color: #888;
+}
+
+button[mat-raised-button] {
+  background-color: #222;
+}

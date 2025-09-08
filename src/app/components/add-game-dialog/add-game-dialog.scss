@@ -1,0 +1,56 @@
+:host {
+  display: block;
+  min-width: 400px;
+  max-width: 420px;
+}
+
+.dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h2[mat-dialog-title] {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #5432ce;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+button.close-dialog {
+  color: #888;
+  transition: color 0.2s ease;
+}
+button.close-dialog:hover {
+  color: #555;
+}
+
+button[mat-button] {
+  background-color: #222;
+  margin-top: 0.5rem;
+  min-width: 120px;
+}
+
+.tab-content {
+  padding-top: 8px;
+}
+
+mat-tab-group {
+  width: 100%;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+/* @media (max-width: 500px) {
+  :host {
+    width: 95vw;       
+    max-width: 95vw;   
+  }
+  mat-dialog-content {
+    padding: 0 2vw 2vw;
+  }
+} */
