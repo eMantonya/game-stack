@@ -5,13 +5,14 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatInputModule } from '@angular/material/input';
-import { MatDialogActions } from '@angular/material/dialog';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatDialogRef } from '@angular/material/dialog';
+import { MatButtonModule } from "@angular/material/button";
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-add-game-dialog',
-  imports: [MatDialogModule, FormsModule, MatProgressSpinnerModule, MatInputModule, MatDialogActions, MatTabsModule],
+  imports: [MatDialogModule, FormsModule, MatProgressSpinnerModule, MatInputModule, MatTabsModule, MatButtonModule, MatIconModule],
   templateUrl: './add-game-dialog.html',
   styleUrls: ['./add-game-dialog.scss']
 })

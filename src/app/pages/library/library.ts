@@ -8,10 +8,11 @@ import { SteamService } from '../../services/steam';
 import { Game } from '../../models/game.model';
 import { MatDialog } from '@angular/material/dialog';
 import { AddGameDialog } from '../../components/add-game-dialog/add-game-dialog';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-library',
-  imports: [GameCardComponent, CommonModule, FormsModule, MatSelectModule, ReactiveFormsModule, MatInputModule],
+  imports: [GameCardComponent, CommonModule, FormsModule, MatSelectModule, ReactiveFormsModule, MatInputModule, MatButtonModule],
   standalone: true,
   templateUrl: './library.html',
   styleUrl: './library.scss'
@@ -172,7 +173,8 @@ export class LibraryComponent {
 
   openAddGameDialog(): void {
     const dialogRef = this.dialog.open(AddGameDialog, {
-      width: '600px',
+      panelClass: 'add-game-dialog',
+      width: '425px',
     });
 
     dialogRef.afterClosed().subscribe((newGames: Game[] | undefined) => {
