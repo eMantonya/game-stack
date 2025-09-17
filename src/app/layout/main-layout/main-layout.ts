@@ -9,4 +9,8 @@ import { MatIcon } from '@angular/material/icon';
   templateUrl: './main-layout.html',
   styleUrls: ['./main-layout.scss']
 })
-export class MainLayoutComponent {}
+export class MainLayoutComponent {
+  loginWithSteam() {
+    window.location.href = 'google.com';
+  }
+}
