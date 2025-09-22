@@ -11,6 +11,10 @@ import { MatIcon } from '@angular/material/icon';
 })
 export class MainLayoutComponent {
   loginWithSteam() {
-    window.location.href = 'google.com';
+    window.open(
+      'https://steam-auth-api-fmgdegchf2dec7bz.centralus-01.azurewebsites.net/api/auth/steam',
+       '_blank', 
+       'width=600,height=800, menubar=no, toolbar=no, location=no, status=no, scrollbars=yes, resizable=yes'
+      );
   }
 }

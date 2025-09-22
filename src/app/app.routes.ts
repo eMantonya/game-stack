@@ -24,6 +24,10 @@ export const routes: Routes = [
     path: 'login',
     loadComponent: () => import('./pages/login/login').then(m => m.LoginComponent)
   },
+    {
+    path: 'auth-complete',
+    loadComponent: () => import('./pages/auth-complete/auth-complete').then(m => m.AuthCompleteComponent)
+  },
   {
     path: 'game/:id',
     loadComponent: () => import('./pages/game-detail/game-detail').then(m => m.GameDetailComponent)
