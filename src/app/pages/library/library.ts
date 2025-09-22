@@ -9,6 +9,7 @@ import { Game } from '../../models/game.model';
 import { MatDialog } from '@angular/material/dialog';
 import { AddGameDialog } from '../../components/add-game-dialog/add-game-dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { Auth } from '../../services/auth';
 
 @Component({
   selector: 'app-library',
@@ -21,7 +22,7 @@ export class LibraryComponent {
   searchControl = new FormControl('');
   selectedGenre = '';
   selectedPlatform = '';
-  steamId = '';
+  steamId: string | null = null;
   games: Game[] = [];
 
 
@@ -169,7 +170,17 @@ export class LibraryComponent {
   }
 ]; */
 
-  constructor(private steamService: SteamService, private dialog: MatDialog) {}
+  constructor(private steamService: SteamService, private dialog: MatDialog, private authService: Auth) {}
+
+  ngOnInit(): void {
+    const steamIdSignal = this.authService.getSteamId();
+    const steamId = steamIdSignal();
+
+    if (steamId) {
+      this.steamId = steamId;
+      this.fetchSteamLibrary(steamId);
+    }
+  }
 
   openAddGameDialog(): void {
     const dialogRef = this.dialog.open(AddGameDialog, {
